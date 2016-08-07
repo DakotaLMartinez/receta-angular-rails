@@ -1,8 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.6.0'
 
-require 'bundler/capistrano'
-
 set :application, 'angular_rails_receta'
 set :repo_url, 'git@github.com:DakotaLMartinez/receta-angular-rails.git'
 
