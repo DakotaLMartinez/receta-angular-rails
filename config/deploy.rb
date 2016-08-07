@@ -27,7 +27,7 @@ namespace :deploy do
 end
 
 namespace :gems do 
-  task :bundle do on roles(:app), in: :sequence do
+  task :bundle do
     run "cd #{release_path} && bundle install --deployment --without development test"
   end
 end
