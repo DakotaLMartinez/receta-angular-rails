@@ -49,6 +49,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
     capistrano-harrow (0.5.3)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -175,6 +178,7 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano
+  capistrano-bundler
   coffee-rails (~> 4.1.0)
   devise
   jbuilder (~> 2.0)
