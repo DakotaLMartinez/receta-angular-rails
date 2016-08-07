@@ -23,17 +23,17 @@ role :db,  "dakotaleedev@dakotaleedev.webfactional.com", :primary => true
 
 
 desc "Restart nginx"
-task :restart do
+task :restart do on roles(:app) do
   run "#{deploy_to}/bin/restart"
 end
 
 desc "Start nginx"
-task :start do
+task :start do on roles(:app) do
   run "#{deploy_to}/bin/start"
 end
 
 desc "Stop nginx"
-task :stop do
+task :stop do on roles(:app) do 
   run "#{deploy_to}/bin/stop"
 end
 
@@ -55,23 +55,23 @@ namespace :deploy do
   puts "==================================================="
 
   desc "Remake database"
-  task :remakedb do
+  task :remakedb do on roles(:db) do
     capture("cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production")
     capture("cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production")
   end
 
   desc "Seed database"
-  task :seed do
+  task :seed do on roles(:db) do
     capture("cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production")
   end
 
   desc "Migrate database"
-  task :migrate do
+  task :migrate do on roles(:db) do
     capture("cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production")
   end
 
   desc "Bundle install gems"
-  task :bundle do
+  task :bundle do on roles(:app) do
     capture("cd #{deploy_to}/current; bundle install --deployment")
   end
 
