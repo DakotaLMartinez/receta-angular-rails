@@ -89,9 +89,9 @@ end
 
 
 after "deploy", "deploy:bundle"
-after "deploy", "deploy:assets:precompile"
-after "deploy", "deploy:migrate"
-after "deploy", "deploy:cleanup"
+# after "deploy", "deploy:assets:precompile"
+# after "deploy", "deploy:migrate"
+# after "deploy", "deploy:cleanup"
 after "deploy", "restart"
 
 #
