@@ -1,7 +1,8 @@
 set :user, "dakotaleedev"
 set :application, "angular_rails_receta"
-set :repository,  "git@github.com:DakotaLMartinez/receta-angular-rails.git"
+set :repo_url,  "git@github.com:DakotaLMartinez/receta-angular-rails.git"
 set :deploy_to, "/home/dakotaleedev/webapps/angular_rails_receta"
+set :tmp_dir, "/home/dakotaleedev/tmp"
 # set :default_stage, "production"
 set :verbose_command_log, true
 set :use_sudo, false
