@@ -21,6 +21,11 @@ namespace :deploy do
   end
 end
 
+namespace :bundler do 
+  desc 'configure bundler' 
+    set :bundle_path, -> { '${PWD}/gems/bin/bundle' }
+end
+
 after 'deploy:publishing', 'deploy:restart'
 
 # Default value for :scm is :git
