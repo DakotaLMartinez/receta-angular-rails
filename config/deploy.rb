@@ -86,11 +86,11 @@ end
 
 
 
-after "deploy", "deploy:bundle"
-after "deploy", "deploy:assets:precompile"
-after "deploy", "deploy:migrate"
-after "deploy", "deploy:cleanup"
-after "deploy", "restart"
+after "deploy:published", "deploy:bundle"
+after "deploy:published", "deploy:assets:precompile"
+after "deploy:published", "deploy:migrate"
+after "deploy:published", "deploy:cleanup"
+after "deploy:published", "restart"
 
 # # config valid only for current version of Capistrano
 # lock '3.6.0'
