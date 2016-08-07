@@ -23,18 +23,24 @@ role :db,  "dakotaleedev@dakotaleedev.webfactional.com", :primary => true
 
 
 desc "Restart nginx"
-task :restart do on roles(:app) do
-  run "#{deploy_to}/bin/restart"
+task :restart do 
+  on roles(:app) do
+    capture("#{deploy_to}/bin/restart")
+  end
 end
 
 desc "Start nginx"
-task :start do on roles(:app) do
-  run "#{deploy_to}/bin/start"
+task :start do 
+  on roles(:app) do
+    capture("#{deploy_to}/bin/start")
+  end
 end
 
 desc "Stop nginx"
-task :stop do on roles(:app) do 
-  run "#{deploy_to}/bin/stop"
+task :stop do 
+  on roles(:app) do 
+    capture("#{deploy_to}/bin/stop")
+  end
 end
 
 
@@ -55,24 +61,32 @@ namespace :deploy do
   puts "==================================================="
 
   desc "Remake database"
-  task :remakedb do on roles(:db) do
-    capture("cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production")
-    capture("cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production")
+  task :remakedb do 
+    on roles(:db) do
+      capture("cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production")
+      capture("cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production")
+    end
   end
 
   desc "Seed database"
-  task :seed do on roles(:db) do
-    capture("cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production")
+  task :seed do 
+    on roles(:db) do
+      capture("cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production")
+    end
   end
 
   desc "Migrate database"
-  task :migrate do on roles(:db) do
-    capture("cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production")
+  task :migrate do 
+    on roles(:db) do
+      capture("cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production")
+    end
   end
 
   desc "Bundle install gems"
-  task :bundle do on roles(:app) do
-    capture("cd #{deploy_to}/current; bundle install --deployment")
+  task :bundle do 
+    on roles(:app) do
+      capture("cd #{deploy_to}/current; bundle install --deployment")
+    end
   end
 
   namespace :assets do
