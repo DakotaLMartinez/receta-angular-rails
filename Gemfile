@@ -40,3 +40,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+
+gem 'capistrano'
