@@ -5,7 +5,7 @@ set :user, "dakotaleedev"
 set :application, "angular_rails_receta"
 set :repository,  "git@github.com:DakotaLMartinez/receta-angular-rails.git"
 set :deploy_to, "/home/dakotaleedev/webapps/angular_rails_receta"
-set :default_stage, "production"
+# set :default_stage, "production"
 set :verbose_command_log, true
 set :use_sudo, false
 set :deploy_via, :checkout
@@ -59,18 +59,18 @@ namespace :deploy do
 
   desc "Remake database"
   task :remakedb do
-    run "cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=#{default_stage}"
-    run "cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=#{default_stage}"
+    run "cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production"
+    run "cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production"
   end
 
   desc "Seed database"
   task :seed do
-    run "cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=#{default_stage}"
+    run "cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=production"
   end
 
   desc "Migrate database"
   task :migrate do
-    run "cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=#{default_stage}"
+    run "cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=production"
   end
 
   desc "Bundle install gems"
@@ -81,7 +81,7 @@ namespace :deploy do
   namespace :assets do
     desc "Run the precompile task remotely"
     task :precompile, :roles => :web, :except => { :no_release => true } do
-      run "cd #{deploy_to}/current; bundle exec rake assets:precompile RAILS_ENV=#{default_stage}"
+      run "cd #{deploy_to}/current; bundle exec rake assets:precompile RAILS_ENV=production"
     end
   end
 
