@@ -91,7 +91,8 @@ namespace :deploy do
 
   namespace :assets do
     desc "Run the precompile task remotely"
-    task :precompile, :roles => :web, :except => { :no_release => true } do
+    task :precompile do 
+      on roles(:web), :except => { :no_release => true } do
       capture("cd #{deploy_to}/current; bundle exec rake assets:precompile RAILS_ENV=production")
     end
   end
