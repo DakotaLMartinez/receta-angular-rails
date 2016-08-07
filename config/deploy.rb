@@ -10,6 +10,11 @@ set :repo_url, 'git@github.com:DakotaLMartinez/receta-angular-rails.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/dakotaleedev/webapps/rails_angular_receta'
 
+set :default_environment, {
+  'PATH' => '#{deploy_to}/bin:$PATH',
+  'GEM_HOME' => '#{deploy_to}/gems'
+}
+
 set :tmp_dir, '/home/dakotaleedev/tmp'
 
 namespace :deploy do 
@@ -21,9 +26,10 @@ namespace :deploy do
   end
 end
 
-namespace :bundler do 
-  desc 'configure bundler' 
-    set :bundle_path, -> { '${PWD}/gems/bin/bundle' }
+namespace :gems do 
+  task :bundle, :roles => :app do 
+    run "cd #{release_path} && bundle install --deployment --without development test"
+  end
 end
 
 after 'deploy:publishing', 'deploy:restart'
