@@ -43,3 +43,4 @@ end
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 gem 'capistrano'
+gem 'devise'
