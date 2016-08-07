@@ -5,7 +5,6 @@ set :user, "dakotaleedev"
 set :application, "angular_rails_receta"
 set :repository,  "git@github.com:DakotaLMartinez/receta-angular-rails.git"
 set :deploy_to, "/home/dakotaleedev/webapps/angular_rails_receta"
-# set :default_stage, "production"
 set :verbose_command_log, true
 set :use_sudo, false
 set :deploy_via, :checkout
@@ -14,7 +13,7 @@ set :branch, "master"
 set :default_environment, {
   "PATH"      =>  "#{deploy_to}/bin:$PATH",
   "GEM_HOME"  =>  "#{deploy_to}/gems",
-  "RAILS_ENV" =>  "#{default_stage}"
+  "RAILS_ENV" =>  "production"
 }
 
 set :scm, :git
